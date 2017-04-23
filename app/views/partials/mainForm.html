@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default" ng-controller="weatherController">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <form ng-submit="getWeather()">
+              <div class="form-group">
+                <label>City:</label>
+                <input class="form-control" ng-model="city" />
+                <br>
+                <input type="submit" class="btn btn-default" value="Get forecast" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <div ng-show="dataPresent" style="padding: 30px">
+          <div class="row">
+            <div class="text-center">
+              <h3>Forecast for today</h3>
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                    <td> {{ forecast.date }}</td>
+                  </tr>
+                  <tr>
+                    <th>City Name</th>
+                    <td> {{forecast.name }}</td>
+                  </tr>
+                  <tr>
+                    <th>Coordinates(lon, lat)</th>
+                    <td> ({{ forecast.coordinates.lon }} , {{ forecast.coordinates.lat }})</td>
+                  </tr>
+                  <tr>
+                    <th>Pressure(hPa)</th>
+                    <td> {{forecast.pressure }}</td>
+                  </tr>
+                  <tr>
+                    <th>Clouds(%)</th>
+                    <td> {{ forecast.clouds }}</td>
+                  </tr>
+                  <tr>
+                    <th>Wind(m/s)</th>
+                    <td> {{forecast.wind }}</td>
+                  </tr>
+                  <tr>
+                    <th>Max Temperature(C)</th>
+                    <td> {{forecast.max_temp }}</td>
+                  </tr>
+                  <tr>
+                    <th>Min Temperature(C)</th>
+                    <td> {{forecast.min_temp }}</td>
+                  </tr>
+                   <tr>
+                    <th>General description</th>
+                    <td> {{forecast.description }}</td>
+                  </tr>
+                </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="text-center">
+              <h3>Pressure bar chart for the next 14 days</h3>
+              <div ng-controller="weatherController">
+                <canvas id="bar" class="chart chart-bar" height='500px' width='650px'
+                  chart-data='data1' chart-labels='labels1'>
+                </canvas>
+              </div>
+              <h3>Temperature during the day</h3>
+              <div ng-controller="weatherController">
+                <canvas id="line" class="chart chart-horizontal-bar" height='500px' width='650px' chart-data="data2"
+                  chart-labels="labels2" chart-options="options"
+                    chart-dataset-override="datasetOverride" chart-click="onClick">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
