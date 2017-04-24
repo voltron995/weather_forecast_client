@@ -6,7 +6,7 @@ angular.module('myServices', [])
       getForecast: function(city) {
         return $http({
           method: "GET",
-          url: "https://162.243.4.120:8000/weather/api/" + city
+          url: "https://162.243.4.120:8000/weather/api/" +city
         }).then(function onFulfilled(response) {
           return { result: response.data };
         }, function onRejected(response) {
